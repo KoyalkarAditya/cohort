@@ -1,0 +1,34 @@
+<!--   
+finding html element by id
+finding html by tag name 
+finding html elements by class name
+finding html element by css selectors ::query selectors
+finding html elements by html objects collections
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="first">Div one</div>
+    <p>paragraph</p>
+    <p>Div two</p>
+    <p class="hello">hello aditya</p>
+    <p class="hello">hello world</p>
+    <p id="answer"></p>
+  </body>
+  <script>
+    let divOne = document.getElementById("first");
+    let allDivs = document.getElementsByTagName("div");
+    let hello = document.getElementsByClassName("hello");
+    document.getElementById("answer").innerText = hello[0].innerText;
+
+    let paragraphs = document.querySelectorAll("p");
+    paragraphs.forEach((para) => (para.style.background = "red"));
+  </script>
+</html>

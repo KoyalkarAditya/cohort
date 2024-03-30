@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .looks {
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="forms">
+      First Name<input type="text" /> Last Name<input type="text" />
+    </form>
+    <button onClick="show()">click</button>
+    <p class="ans"></p>
+
+    <p id="myH1">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis dolore
+      labore cupiditate. In, debitis odio illo quos minima nulla accusamus
+      similique consequatur excepturi, culpa adipisci! At exercitationem
+      adipisci modi doloribus!
+    </p>
+    <button onclick="ChangeTheColor()">change</button>
+  </body>
+  <script>
+    function show() {
+      const x = document.forms["forms"];
+      let text = "";
+      for (let i = 0; i < x.length; i++) {
+        text += x.elements[i].value + "<br>";
+      }
+      document.querySelector(".ans").innerHTML = text;
+    }
+    function ChangeTheColor() {
+      let para = document.getElementById("myH1");
+      para.setAttribute("class", "looks");
+    }
+  </script>
+</html>

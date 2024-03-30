@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input class="todo" type="text" placeholder="enter todo" />
+    <input class="todoDescription" type="text" placeholder="todo description" />
+    <button onclick="addTodo()">Add todo</button>
+    <div class="container"></div>
+  </body>
+  <script>
+    let idCount = 1;
+    function addTodo() {
+      let todo = document.querySelector(".todo").value;
+      let todoDescription = document.querySelector(".todoDescription").value;
+      let child = createTodo(todo, todoDescription, idCount++);
+      document.querySelector(".container").appendChild(child);
+    }
+    function createTodo(todo, description, id) {
+      let outerChild = document.createElement("div");
+      let firstInnerChild = document.createElement("div");
+      let secondInnerChild = document.createElement("div");
+      firstInnerChild.innerHTML = todo;
+      secondInnerChild.innerHTML = description;
+      let thirdChild = document.createElement("button");
+      thirdChild.innerHTML = "mark as done";
+      outerChild.setAttribute("id", id);
+      thirdChild.setAttribute("onclick", `markasDone(${id})`);
+      outerChild.appendChild(firstInnerChild);
+      outerChild.appendChild(secondInnerChild);
+      outerChild.appendChild(thirdChild);
+      return outerChild;
+    }
+    function markasDone(id) {
+      const parentDiv = document.getElementById(id);
+      parentDiv.children[2].innerHTML = "Done";
+    }
+  </script>
+</html>

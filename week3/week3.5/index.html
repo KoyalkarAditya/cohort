@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi incidunt
+      sapiente tenetur quidem molestias corporis consequatur dignissimos non
+      repellendus ad, accusantium rerum porro labore placeat dicta et, molestiae
+      cupiditate maiores?
+    </p>
+    <div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi rem quis
+        sapiente voluptates ut consectetur excepturi nesciunt distinctio. Maxime
+        eos temporibus numquam maiores nam magnam, explicabo quidem magni
+        eveniet perferendis?
+      </p>
+    </div>
+    <div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, tenetur.
+        Odio perferendis, sed eligendi dolor mollitia distinctio accusamus
+        temporibus? Animi, explicabo! Nulla rem numquam saepe ratione incidunt
+        minus maiores aspernatur?
+      </p>
+    </div>
+  </body>
+  <script>
+    const nodeList = document.querySelectorAll("div > p");
+    nodeList.forEach((node) => {
+      node.style.background = "red";
+    });
+    /*
+    for (let i = 0; i < nodeList.length; i++) {
+      nodeList[i].style.background = "black";
+    }
+
+    */
+  </script>
+</html>

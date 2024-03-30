@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input class="todo" type="text" placeholder="enter todo" />
+    <input class="todoDescription" type="text" placeholder="todo description" />
+    <button>Add todo</button>
+    <div class="container"></div>
+  </body>
+  <script>
+    window.setInterval(async () => {
+      let res = await fetch("https://sum-server.100xdevs.com/todos");
+      let json = await res.json();
+      console.log(json.todos);
+      updateTodoAcctoState(json.todos);
+    }, 2000);
+
+    function updateTodoAcctoState(state) {
+      let parent = document.createElement("div");
+      state.forEach((item) => {
+        parent.appendChild(createTodo(item.title, item.descripton, item.id));
+      });
+      document.querySelector(".container").innerHTML = parent.innerHTML;
+    }
+
+    let idCount = 1;
+    function createTodo(todo, description, id) {
+      let outerChild = document.createElement("div");
+      let firstInnerChild = document.createElement("div");
+      let secondInnerChild = document.createElement("div");
+      firstInnerChild.innerHTML = todo;
+      secondInnerChild.innerHTML = description;
+      let thirdChild = document.createElement("button");
+      thirdChild.innerHTML = "mark as done";
+      outerChild.setAttribute("id", id);
+      //  thirdChild.setAttribute("onclick", `markasDone(${id})`);
+      outerChild.appendChild(firstInnerChild);
+      outerChild.appendChild(secondInnerChild);
+      outerChild.appendChild(thirdChild);
+      return outerChild;
+    }
+  </script>
+</html>

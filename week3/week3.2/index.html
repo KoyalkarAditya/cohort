@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch API</title>
+  </head>
+  <body>
+    <button onclick="getAnimalData()">GetAnimalData</button>
+    <div class="users"></div>
+  </body>
+  <script>
+    let usersData = document.querySelector(".users");
+    async function getAnimalData() {
+      let persons = await fetch("https://fakerapi.it/api/v1/persons");
+      let finalData = await persons.json();
+      console.log(finalData);
+      usersData.innerHTML = JSON.stringify(finalData.data);
+    }
+    /*function getAnimalData() {
+      fetch("https://fakerapi.it/api/v1/persons").then((persons) => {
+        persons.json().then((finalData) => {
+          console.log(finalData);
+        });
+      });
+    }
+    */
+  </script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      class="first"
+      oninput="debounceCalculate()"
+      type="text"
+      placeholder="first number"
+    />
+    <br />
+    <input
+      class="second"
+      oninput="debounceCalculate()"
+      type="text"
+      placeholder="second number"
+    />
+    <br />
+  </body>
+  <script>
+    let timeout;
+    function debounceCalculate() {
+      clearTimeout(timeout); //clearing  timeout of previous setTimeout if it is called again inside 1sec .If it  get called after one sec then clock expires so,it clears nothing
+      //delay the call for Calculate only if i have not called for 100ms
+      timeout = setTimeout(() => {
+        Calculate();
+      }, 1000);
+    }
+    async function Calculate() {
+      let a = document.querySelector(".first").value;
+      let b = document.querySelector(".second").value;
+      // let ans = parseFloat(a) + parseFloat(b);
+      let ans = await fetch(
+        `https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`
+      );
+      ans = await ans.text();
+      let ansElement = document.createElement("div");
+      ansElement.innerHTML = ans;
+      document.body.appendChild(ansElement);
+    }
+  </script>
+</html>

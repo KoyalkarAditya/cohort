@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input class="todo" type="text" placeholder="enter todo" />
+    <input class="todoDescription" type="text" placeholder="todo description" />
+    <button onclick="addTodo()">Add todo</button>
+  </body>
+  <script>
+    function addTodo() {
+      let todo = document.querySelector(".todo").value;
+      let todoDescription = document.querySelector(".todoDescription").value;
+      let todElement = document.createElement("div");
+      todElement.innerHTML += todo + "<br/>";
+      todElement.innerHTML += todoDescription + "<br/>";
+      let btn = document.createElement("button");
+      btn.classList.add("btn");
+      btn.innerText = "mark as done";
+      todElement.appendChild(btn);
+      document.body.appendChild(todElement);
+      let btn_s = document.querySelectorAll(".btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          button.innerHTML = "done";
+        });
+      });
+    }
+  </script>
+</html>

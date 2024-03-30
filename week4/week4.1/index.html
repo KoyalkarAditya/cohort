@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input class="first" type="text" placeholder="first number" />
+    <br />
+    <input class="second" type="text" placeholder="second number" />
+    <br />
+    <button class="calculate" onclick="Calculate()">Calculate</button>
+  </body>
+  <script>
+    async function Calculate() {
+      let a = document.querySelector(".first").value;
+      let b = document.querySelector(".second").value;
+      // let ans = parseFloat(a) + parseFloat(b);
+      /* 
+     let ans = await fetch(
+        `https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`
+      );
+      */
+      let ans = await fetch(`http://localhost:3000/add?a=${a}&b=${b}`, {
+        method: "GET", //by default gets
+      });
+      ans = await ans.text();
+      let ansElement = document.createElement("div");
+      ansElement.innerHTML = ans;
+      document.body.appendChild(ansElement);
+    }
+  </script>
+</html>
